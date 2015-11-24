@@ -1,0 +1,3 @@
+LXC_NAME=deploy-test
+
+#APT_CACHER_IP=10.0.3.1

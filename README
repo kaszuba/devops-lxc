@@ -1,0 +1,19 @@
+# Download MirantisOpenStack-7.0.iso to iso directory
+
+# create env
+./create.sh
+./copy_iso.sh
+./enter.sh
+
+# Simple test
+export VENV_PATH=/home/ubuntu/fuel-devops-venv
+export ISO_PATH=/home/ubuntu/MirantisOpenStack-7.0.iso
+export NODES_COUNT=6
+export MAKE_SNAPSHOT=true
+export FUEL_STATS_ENABLED=false
+cd fuel-qa
+./utils/jenkins/system_tests.sh -t test -w $(pwd) -j test1 -i $ISO_PATH -o --group=setup
+
+# cleanup
+source /home/ubuntu/fuel-devops-venv/bin/activate
+dos.py erase test1_system_test
